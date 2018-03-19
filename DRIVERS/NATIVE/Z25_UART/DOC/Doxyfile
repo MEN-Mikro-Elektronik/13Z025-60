@@ -1,0 +1,21 @@
+@INCLUDE_PATH = $(MEN_DOXYGENTMPL)
+@INCLUDE = DoxyfileCommon
+
+PROJECT_NAME           = "13z025-60"
+INPUT                  =  ../ \
+                          ../../../../INCLUDE/NATIVE/MEN/mz25_module.h \
+                          ../../../../INCLUDE/NATIVE/MEN/z25_driver.h \
+                          ../../../../INCLUDE/NATIVE/MEN/z25_mdis.h 
+
+EXAMPLE_RECURSIVE      = YES
+EXAMPLE_PATH           = 
+OUTPUT_DIRECTORY       = .
+EXTRACT_ALL            = YES
+EXTRACT_STATIC         = YES
+GENERATE_HTMLHELP      = YES
+WARNINGS               = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_IF_UNDOCUMENTED   = YES
+GENERATE_HTMLHELP      = YES
+TAGFILES               = 
+GENERATE_TAGFILE       = 

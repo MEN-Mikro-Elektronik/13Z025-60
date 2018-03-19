@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="packagedesc.xsd">
+	<name>13z02560</name>
+	<description>VxWorks native driver package for MEN Z25 driver</description>
+	<date>2018-03-19</date>
+	<revision>2.0</revision>
+	<docroot>DRIVERS/NATIVE/Z25_UART/DOC/html/index.html</docroot>
+	<modellist>
+		<model>
+			<hwname>Z25</hwname>
+			<description>quad channel RS232/485/422 serial interface</description>
+			<devtype>MDIS</devtype>
+			<autoid>
+				<chamunitid>0x00000007</chamunitid>
+				<chamv2id>0x00000025</chamv2id>
+			</autoid>
+			<busif>ChameleonBus</busif>
+		</model>
+		<model>
+			<hwname>Z125</hwname>
+			<description>single channel RS232/485/422 serial interface</description>
+			<devtype>MDIS</devtype>
+			<autoid>
+				<chamv2id>0x00000125</chamv2id>
+			</autoid>
+			<busif>ChameleonBus</busif>
+		</model>
+	</modellist>
+	<settinglist>
+		<setting>
+			<name>ID_CHECK</name>
+			<description>Define wether PCI device/vendor ID are checked</description>
+			<type>U_INT32</type>
+			<defaultvalue>1</defaultvalue>
+			<choises>
+				<choise>
+					<value>1</value>
+					<description>enable</description>
+				</choise>
+				<choise>
+					<value>0</value>
+					<description>disable -- ignore IDPROM</description>
+				</choise>
+			</choises>
+		</setting>
+		<setting>
+			<name>PCI_VENDOR_ID</name>
+			<description>Vendor id</description>
+			<type>U_INT32</type>
+			<defaultvalue>0x1172</defaultvalue>
+		</setting>
+		<setting>
+			<name>PCI_DEVICE_ID</name>
+			<description>Device id</description>
+			<type>U_INT32</type>
+			<defaultvalue>0x000b</defaultvalue>
+		</setting>
+		<settingsubdir rangestart="0" rangeend="3">
+			<name>CHANNEL_</name>
+			<setting>
+				<name>FIOBAUDRATE</name>
+				<description>baud rate</description>
+				<type>U_INT32</type>
+				<defaultvalue>9600</defaultvalue>
+				<choises>
+					<choise>
+						<value>300</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>600</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>1200</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>2400</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>4800</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>9600</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>14400</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>19200</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>28800</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>38400</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>57600</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>115200</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>230400</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>576000</value>
+						<description>Baud</description>
+					</choise>
+					<choise>
+						<value>1152000</value>
+						<description>Baud</description>
+					</choise>
+				</choises>
+			</setting>
+			<setting>
+				<name>RX_BUFF_SIZE</name>
+				<description>driver internal Rx buffer size</description>
+				<type>U_INT32</type>
+				<defaultvalue>512</defaultvalue>
+				<choises>
+					<choise>
+						<value>128</value>
+						<description>byte</description>
+					</choise>
+					<choise>
+						<value>256</value>
+						<description>byte</description>
+					</choise>
+					<choise>
+						<value>512</value>
+						<description>byte</description>
+					</choise>
+				</choises>
+			</setting>
+			<setting>
+				<name>TX_BUFF_SIZE</name>
+				<description>driver internal Tx buffer size</description>
+				<type>U_INT32</type>
+				<defaultvalue>512</defaultvalue>
+				<choises>
+					<choise>
+						<value>128</value>
+						<description>byte</description>
+					</choise>
+					<choise>
+						<value>256</value>
+						<description>byte</description>
+					</choise>
+					<choise>
+						<value>512</value>
+						<description>byte</description>
+					</choise>
+				</choises>
+			</setting>
+			<setting>
+				<name>FIFO_LEVEL</name>
+				<description>Rx FIFO IRQ trigger level</description>
+				<type>U_INT32</type>
+				<defaultvalue>4</defaultvalue>
+				<choises>
+					<choise>
+						<value>1</value>
+						<description>1 Byte</description>
+					</choise>
+					<choise>
+						<value>4</value>
+						<description>4 bytes, Z125 extended FIFOs: 8 bytes</description>
+					</choise>
+					<choise>
+						<value>30</value>
+						<description>30 bytes, Z125 extended FIFOs: 60 bytes</description>
+					</choise>
+					<choise>
+						<value>58</value>
+						<description>58 bytes, Z125 extended FIFOs: 116 bytes</description>
+					</choise>
+				</choises>
+			</setting>
+			<setting>
+				<name>TX_FIFO_LEVEL</name>
+				<description>Tx FIFO IRQ trigger level</description>
+				<type>U_INT32</type>
+				<defaultvalue>4</defaultvalue>
+				<choises>
+					<choise>
+						<value>1</value>
+						<description>1 Byte</description>
+					</choise>
+					<choise>
+						<value>4</value>
+						<description>4 bytes, Z125 extended FIFOs: 8 bytes</description>
+					</choise>
+					<choise>
+						<value>30</value>
+						<description>30 bytes, Z125 extended FIFOs: 60 bytes</description>
+					</choise>
+					<choise>
+						<value>58</value>
+						<description>58 bytes, Z125 extended FIFOs: 116 bytes</description>
+					</choise>
+				</choises>
+			</setting>
+			<setting>
+				<name>PHYS_INT</name>
+				<description>physical interface RS232/RS485/RS422</description>
+				<type>U_INT32</type>
+				<defaultvalue>0x00</defaultvalue>
+				<choises>
+					<choise>
+						<value>0x00</value>
+						<description>RS232</description>
+					</choise>
+					<choise>
+						<value>0x01</value>
+						<description>RS422/RS485 half duplex</description>
+					</choise>
+					<choise>
+						<value>0x02</value>
+						<description>RS422/RS485 full duplex</description>
+					</choise>
+				</choises>
+			</setting>
+		</settingsubdir>
+	</settinglist>
+	<swmodulelist>
+		<swmodule>
+			<name>z25</name>
+			<description>Driver for Z25</description>
+			<type>Low Level Driver</type>
+			<makefilepath>../NATIVE/Z25_UART/driver.mak</makefilepath>
+		</swmodule>
+	</swmodulelist>
+</package>
