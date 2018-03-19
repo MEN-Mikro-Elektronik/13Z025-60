@@ -7,21 +7,12 @@
 	<docroot>DRIVERS/NATIVE/Z25_UART/DOC/html/index.html</docroot>
 	<modellist>
 		<model>
-			<hwname>Z25</hwname>
-			<description>quad channel RS232/485/422 serial interface</description>
+			<hwname>16Zx25_UART</hwname>
+			<description>RS232/422/485 single(Z125)/multi channel(Z025) UARTs (adding one instance is sufficient!)</description>
 			<devtype>MDIS</devtype>
 			<autoid>
 				<chamunitid>0x00000007</chamunitid>
 				<chamv2id>0x00000025</chamv2id>
-			</autoid>
-			<busif>ChameleonBus</busif>
-		</model>
-		<model>
-			<hwname>Z125</hwname>
-			<description>single channel RS232/485/422 serial interface</description>
-			<devtype>MDIS</devtype>
-			<autoid>
-				<chamv2id>0x00000125</chamv2id>
 			</autoid>
 			<busif>ChameleonBus</busif>
 		</model>
