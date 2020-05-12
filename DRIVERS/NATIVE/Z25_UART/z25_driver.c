@@ -144,7 +144,7 @@
  *
  * Revision 1.3  2005/07/22 10:15:59  CSchuster
  * LocFindChameleonDevices(): fixed indexing problem
- * 	index ran away when FPGAs without Z025_UART modules found
+ * index ran away when FPGAs without Z025_UART modules found
  *
  * Revision 1.2  2005/07/06 09:08:08  SVogel
  * PCI bus search algorithm changed
@@ -468,14 +468,14 @@
 *  following syntax:
 *          "PCIn:bbb.dd.ff"
 *  Where:
-*         n = PCI domain. For CPUs with single PCI controller: 						n=0
+*         n = PCI domain. For CPUs with single PCI controller:                     n=0
 *
-*                         For CPUs with multiple PCI controllers (e.g. A21):        n=<PCI domain>
+*                         For CPUs with multiple PCI controllers (e.g. A21):       n=<PCI domain>
 *                         n must be the PCI(e) controller # on which the chameleon FPGA is located.
 *                         Attention: domain count starts with 1, because the value is used as
 *                         the PCI controller driver instance passed to vxbInstByNameFind().
-*         bbb = PCI bus number,  0..255  	[in decimal!]
-*         dd = PCI device number, 0..31		[in decimal!]
+*         bbb = PCI bus number,  0..255     [in decimal!]
+*         dd = PCI device number, 0..31     [in decimal!]
 *         f = PCI function number, for MEN Chameleon FPGAs this is always 0.
 *
 *  If the PCI bus path string does not start with the 3 letters 'PCI' its assumed that the standard
@@ -487,9 +487,9 @@
 *  vxbPciConfigTopoShow. Example:
 *      -> vxBusShow
 *      [...]
-*           m85xxPci unit 0 on PLB_Bus @ 0x00497aa8 with busInfo 0x00000000
-*			m85xxPci unit 1 on PLB_Bus @ 0x0049bca8 with busInfo 0x004963e8
-*			m85xxPci unit 2 on PLB_Bus @ 0x0049bea8 with busInfo 0x00496728
+*            m85xxPci unit 0 on PLB_Bus @ 0x00497aa8 with busInfo 0x00000000
+*            m85xxPci unit 1 on PLB_Bus @ 0x0049bca8 with busInfo 0x004963e8
+*            m85xxPci unit 2 on PLB_Bus @ 0x0049bea8 with busInfo 0x00496728
 *      [...]
 *      Here the VXB_DEVICE_ID handlers are 0x00497aa8 for PCI controller #1,
 *                                          0x0049bca8 for PCI controller #2,
@@ -497,54 +497,54 @@
 *
 *      Now the controllers can be checked using vxbPciHeaderShow:
 *      -> vxbPciConfigTopoShow  0x0049bca8
-*	[0,0,0] type=PROCESSOR
-*			status=0x0010 ( CAP DEVSEL=0 )
-*			command=0x0006 ( MEM_ENABLE MASTER_ENABLE )
-*			bar0 in 32-bit mem space @ 0xc0000000
-*	[1,0,0] type=P2P BRIDGE to [2,0,0]
-*			base/limit:
-*			  mem=   0xa0000000/0xa40fffff
-*			  preMem=0x0000000010000000/0x00000000000fffff
-*			  I/O=   0x00001000/0x00000fff
-*			status=0x0010 ( CAP DEVSEL=0 )
-*			command=0x0007 ( IO_ENABLE MEM_ENABLE MASTER_ENABLE )
-*	[2,3,0] type=UNKNOWN (0x80) BRIDGE
-*			status=0x0200 ( DEVSEL=1 )
-*			command=0x0007 ( IO_ENABLE MEM_ENABLE MASTER_ENABLE )
-*			bar0 in 32-bit mem space @ 0xa0000000
-*			bar1 in prefetchable 32-bit mem space @ 0xa2000000
-*			bar2 in 32-bit mem space @ 0xa4000000
-*			bar3 in 32-bit mem space @ 0xa4001000
-*	value = 0 = 0x0
-*	-> vxbPciHeaderShow 0x0049bca8,2,3,0
-*		vendor ID =                   0x1a88
-*		device ID =                   0x4d45
-*		command register =            0x0007
-*		status register =             0x0200
-*		revision ID =                 0x05
-*		class code =                  0x06
-*		sub class code =              0x80
-*		programming interface =       0x00
-*		cache line =                  0x00
-*		latency time =                0x80
-*		header type =                 0x00
-*		BIST =                        0x00
-*		base address 0 =              0xa0000000
-*		base address 1 =              0xa2000008
-*		base address 2 =              0xa4000000
-*		base address 3 =              0xa4001000
-*		base address 4 =              0x00000000
-*		base address 5 =              0x00000000
-*		cardBus CIS pointer =         0x00000000
-*		sub system vendor ID =        0x00a3
-*		sub system ID =               0x5a14
-*		expansion ROM base address =  0x00000000
-*		interrupt line =              0x07
-*		interrupt pin =               0x01
-*		min Grant =                   0x01
-*		max Latency =                 0xff
-*		value = 0 = 0x0
-*		->
+*    [0,0,0] type=PROCESSOR
+*            status=0x0010 ( CAP DEVSEL=0 )
+*            command=0x0006 ( MEM_ENABLE MASTER_ENABLE )
+*            bar0 in 32-bit mem space @ 0xc0000000
+*    [1,0,0] type=P2P BRIDGE to [2,0,0]
+*            base/limit:
+*              mem=   0xa0000000/0xa40fffff
+*              preMem=0x0000000010000000/0x00000000000fffff
+*              I/O=   0x00001000/0x00000fff
+*            status=0x0010 ( CAP DEVSEL=0 )
+*            command=0x0007 ( IO_ENABLE MEM_ENABLE MASTER_ENABLE )
+*    [2,3,0] type=UNKNOWN (0x80) BRIDGE
+*            status=0x0200 ( DEVSEL=1 )
+*            command=0x0007 ( IO_ENABLE MEM_ENABLE MASTER_ENABLE )
+*            bar0 in 32-bit mem space @ 0xa0000000
+*            bar1 in prefetchable 32-bit mem space @ 0xa2000000
+*            bar2 in 32-bit mem space @ 0xa4000000
+*            bar3 in 32-bit mem space @ 0xa4001000
+*    value = 0 = 0x0
+*    -> vxbPciHeaderShow 0x0049bca8,2,3,0
+*        vendor ID =                   0x1a88
+*        device ID =                   0x4d45
+*        command register =            0x0007
+*        status register =             0x0200
+*        revision ID =                 0x05
+*        class code =                  0x06
+*        sub class code =              0x80
+*        programming interface =       0x00
+*        cache line =                  0x00
+*        latency time =                0x80
+*        header type =                 0x00
+*        BIST =                        0x00
+*        base address 0 =              0xa0000000
+*        base address 1 =              0xa2000008
+*        base address 2 =              0xa4000000
+*        base address 3 =              0xa4001000
+*        base address 4 =              0x00000000
+*        base address 5 =              0x00000000
+*        cardBus CIS pointer =         0x00000000
+*        sub system vendor ID =        0x00a3
+*        sub system ID =               0x5a14
+*        expansion ROM base address =  0x00000000
+*        interrupt line =              0x07
+*        interrupt pin =               0x01
+*        min Grant =                   0x01
+*        max Latency =                 0xff
+*        value = 0 = 0x0
+*        ->
 *
 *  \n
 *  \note All 16Z025 quad UART units of the FPGA will be installed !
@@ -681,17 +681,17 @@
 
 /* error handling for direct PCI dev. specification */
 #define CHK_NUMBER(X)  if (((X) < '0') && ((X) > '9')) { \
-							errval = ERROR; \
-							goto errout; \
-						 }
+                            errval = ERROR; \
+                            goto errout; \
+                         }
 
 
 /* for debug verbosity in case of DBG build */
-#define VERBOSITY_1		0x1
-#define VERBOSITY_2		0x3
-#define VERBOSITY_3		0x7
+#define VERBOSITY_1        0x1
+#define VERBOSITY_2        0x3
+#define VERBOSITY_3        0x7
 
-#define NR_MAX_DOMAINS	3   		/* currently on QorIQ P10/20xx */
+#define NR_MAX_DOMAINS    3           /* currently on QorIQ P10/20xx */
 
 #define LZ25_CREATE_TYPE_AT_BOOT       (1)
 #define LZ25_CREATE_TYPE_LATE          (2)
@@ -729,7 +729,7 @@ LOCAL STATUS LocScanPciDevices(Z25_PCI_SCAN_TS **pciDevicesP,
                                u_int8 pciDomains);
 
 LOCAL STATUS LocFindPciBridge(int32 pciDomain,
-							  int32 bus,
+                              int32 bus,
                               u_int8 *busP,
                               int32 *devP);
 
@@ -934,32 +934,32 @@ LOCAL int LocOptsSet( Z25_TY_CO_DEV_TS *chanP,
 
     if( (chanP->options & CLOCAL) != (options & CLOCAL) ) {
         if (!(options & CLOCAL))
-	    {	
+        {
         /* !clocal enables hardware flow control(DTR/DSR) */
 
             MZ25_SetModemControl(chanP->unitHdlP, TRUE);
             MZ25_SetRts(chanP->unitHdlP, TRUE);
             MZ25_SetDtr(chanP->unitHdlP, TRUE);
-	    }
+        }
         else
-	    {
-    	/* disable modem status interrupt */
+        {
+        /* disable modem status interrupt */
 
             MZ25_SetModemControl(chanP->unitHdlP, FALSE);
             MZ25_SetRts(chanP->unitHdlP, FALSE);
             MZ25_SetDtr(chanP->unitHdlP, FALSE);
-	    }
-	}
+        }
+    }
 
     if( (chanP->options & CREAD) != (options & CREAD) ) {
-	    if (options & CREAD) {
+        if (options & CREAD) {
             /* enable receive interrupt of channel */
             MZ25_EnableInterrupt( chanP->unitHdlP, MZ25_RDAIEN );
-	    } else {
+        } else {
             /* disable receive interrupt of channel */
             MZ25_DisableInterrupt( chanP->unitHdlP, MZ25_RDAIEN );
-	    }
-	}
+        }
+    }
 
     chanP->options = options;
 
@@ -1034,18 +1034,18 @@ LOCAL int LocMstatGet
 LOCAL int LocMstatSetClr
     (
     Z25_TY_CO_DEV_TS *chanP,
-    UINT bits,		/* bits to change */
-    BOOL setFlag	/* TRUE = set, FALSE = clear */
+    UINT bits,      /* bits to change */
+    BOOL setFlag    /* TRUE = set, FALSE = clear */
     )
     {
 
     if (bits & SIO_MODEM_DTR) {
         MZ25_SetDtr(chanP->unitHdlP, setFlag);
-	}
+    }
 
     if (bits & SIO_MODEM_RTS) {
         MZ25_SetRts(chanP->unitHdlP, setFlag);
-	}
+    }
 
     return OK;
     }
@@ -1101,7 +1101,7 @@ LOCAL int LocCallbackInstall(  SIO_CHAN *  sioChanP,
  *  \return Z25_OK or Z25_ERROR
  */
 LOCAL STATUS  LocFindPciBridge(int32 pciDomain,
-							   int32 bus,
+                               int32 bus,
                                u_int8 *busP,
                                int32 *devP)
 {
@@ -1120,8 +1120,8 @@ LOCAL STATUS  LocFindPciBridge(int32 pciDomain,
         for (pciDevice = 0; pciDevice < LZ25_MAX_PCI_DEV_NO; pciDevice++){
             for (pciFunc = 0; pciFunc < LZ25_MAX_PCI_FUNC_NO; pciFunc++){
                 /* read out vendor id */
-            	OSS_PciGetConfig(NULL, OSS_MERGE_BUS_DOMAIN(pciBus, pciDomain),
-							pciDevice, pciFunc, OSS_PCI_VENDOR_ID, &vendor);
+                OSS_PciGetConfig(NULL, OSS_MERGE_BUS_DOMAIN(pciBus, pciDomain),
+                            pciDevice, pciFunc, OSS_PCI_VENDOR_ID, &vendor);
 
                 /*---------------------------------------------------+
                 | only look at vendor ID field for existence check   |
@@ -1133,23 +1133,24 @@ LOCAL STATUS  LocFindPciBridge(int32 pciDomain,
                     | read out header type          |
                     | skip if not PCI_PCI bridge    |
                     +-------------------------------*/
-                	OSS_PciGetConfig(NULL, OSS_MERGE_BUS_DOMAIN(pciBus, pciDomain),
-								pciDevice, pciFunc, OSS_PCI_HEADER_TYPE, &header);
+                    OSS_PciGetConfig(NULL, OSS_MERGE_BUS_DOMAIN(pciBus, pciDomain),
+                                pciDevice, pciFunc, OSS_PCI_HEADER_TYPE, &header);
 
                     /* PCI to PCI bridge header found */
                     if ((header & PCI_HEADER_TYPE_MASK) == PCI_HEADER_PCI_PCI){
                         /* read out secondary bus number */
-                    	OSS_PciGetConfig(NULL, OSS_MERGE_BUS_DOMAIN(pciBus, pciDomain),
-										pciDevice, pciFunc, OSS_PCI_SECONDARY_BUS, &secondaryBus);
+                        OSS_PciGetConfig(NULL, OSS_MERGE_BUS_DOMAIN(pciBus, pciDomain),
+                                        pciDevice, pciFunc, OSS_PCI_SECONDARY_BUS, &secondaryBus);
 
                         /* secondary bus available */
                         if(secondaryBus == bus){
-                        	OSS_PciGetConfig(NULL,
-											OSS_MERGE_BUS_DOMAIN(pciBus, pciDomain),
-                                                pciDevice,
-                                                pciFunc,
-											OSS_PCI_SECONDARY_BUS,
-                                                &primaryBus);
+                            OSS_PciGetConfig( NULL,
+                                              OSS_MERGE_BUS_DOMAIN( pciBus,
+                                                                    pciDomain ),
+                                              pciDevice,
+                                              pciFunc,
+                                              OSS_PCI_SECONDARY_BUS,
+                                              &primaryBus );
 
                             /* bus number of PCI to PCI bridge */
                             *busP = primaryBus;
@@ -1182,15 +1183,15 @@ LOCAL STATUS  LocFindPciBridge(int32 pciDomain,
  *  \return Z25_OK or Z25_ERROR
  */
 LOCAL STATUS LocScanPciDevices(Z25_PCI_SCAN_TS **pciDevicesP,
-		u_int16 *noPciDevicesP,
-		u_int8 pciDomain)
+        u_int16 *noPciDevicesP,
+        u_int8 pciDomain)
 {
-    int32 busNo = 0;        /* bus number index */
-    int32 deviceNo = 0;     /* device number index */
-    int32 funcNo = 0;       /* function number index */
-    int32 device 	= 0;    /* device ID 				 */
-    int32 vendor 	= 0;    /* vendor ID 				 */
-    u_int16 devCnt = 0;
+    int32 busNo     = 0; /* bus number index */
+    int32 deviceNo  = 0; /* device number index */
+    int32 funcNo    = 0; /* function number index */
+    int32 device    = 0; /* device ID                  */
+    int32 vendor    = 0; /* vendor ID                  */
+    u_int16 devCnt  = 0;
     Z25_PCI_SCAN_TS *pciDevicesTmpP = NULL;
 
     for (busNo=0; busNo < Z25_MAX_PCI_BUS_SEARCH; busNo++)
@@ -1203,24 +1204,24 @@ LOCAL STATUS LocScanPciDevices(Z25_PCI_SCAN_TS **pciDevicesP,
                 /* check if valid vendor ID */
             if( vendor == CHAMELEON_PCI_VENID_MEN || vendor == CHAMELEON_PCI_VENID_ALTERA )
             {
-            	if( devCnt == 0 ) {
+                if( devCnt == 0 ) {
                         pciDevicesTmpP = malloc(sizeof(Z25_PCI_SCAN_TS));
-            		if ( pciDevicesTmpP == NULL ) { /* KlocWork Finding */
-            			*pciDevicesP = NULL;
-            			return Z25_ERROR;
-            		}
+                    if ( pciDevicesTmpP == NULL ) { /* KlocWork Finding */
+                        *pciDevicesP = NULL;
+                        return Z25_ERROR;
+                    }
                         *pciDevicesP = pciDevicesTmpP;
-            	} else {
+                } else {
                     pciDevicesTmpP->nextP = malloc(sizeof(Z25_PCI_SCAN_TS));
                     if ( pciDevicesTmpP->nextP == NULL ) { /* KlocWork Finding */
-                	    pciDevicesTmpP = NULL;
-                	    return Z25_ERROR;
+                        pciDevicesTmpP = NULL;
+                        return Z25_ERROR;
                     }
                         pciDevicesTmpP = (Z25_PCI_SCAN_TS *)pciDevicesTmpP->nextP;
                     }
 
                         bzero((char *)pciDevicesTmpP, sizeof(Z25_PCI_SCAN_TS));
-            	devCnt ++;
+                        devCnt ++;
                         pciDevicesTmpP->vendorId = vendor;
                         pciDevicesTmpP->deviceId = device;
                         pciDevicesTmpP->busNo = (u_int8)(busNo & 0x000000ff);
@@ -1236,7 +1237,7 @@ LOCAL STATUS LocScanPciDevices(Z25_PCI_SCAN_TS **pciDevicesP,
         return Z25_ERROR;
     }
     else{
-    	*noPciDevicesP = devCnt;
+        *noPciDevicesP = devCnt;
         return Z25_OK;
     }
 }/* LocScanPciDevices */
@@ -1342,7 +1343,7 @@ LOCAL STATUS LocFindChameleonDevices(Z25_HDL *hdlP, u_int8 pciDomain){
     }
 
     if (pciDomain > NR_MAX_DOMAINS)
-    	return Z25_ERROR;
+        return Z25_ERROR;
 
     DBGWRT_1( (z25HdlP->dbgHdlP, "Z25/Z125 - LocFindChameleonDevices.\n" ) );
     if( LocScanPciDevices(&pciDevicesP, &noPciDevices, pciDomain) == Z25_OK ) {
@@ -1378,21 +1379,21 @@ LOCAL STATUS LocFindChameleonDevices(Z25_HDL *hdlP, u_int8 pciDomain){
             k = 0;
         }
     } else {
-	    DBGWRT_ERR( (z25HdlP->dbgHdlP, "*** Z25/Z125 - No considerable PCI devices found\n") );
-	    /* KlocWork finding: free already malloc'ed elements, like above
-	     * (This scenario can occur if e.g. some list handles could be allocated,
-	     * then during search for Z25 devices we run out of memory).
-	     * In that case, LocScanPciDevices returned a nr. of PCI devices but not all.
-	     * We iterate trough the list from start element to that number (or as long as there
-	     * are ->nextP elements) and free them. */
-	    for( i=0; (i < noPciDevices) && (pciDevicesP != NULL); i++ ) {
-		    addrFreeP = (u_int32 *)pciDevicesP;
-		    pciDevicesP = (Z25_PCI_SCAN_TS *)pciDevicesP->nextP;
-		    /* free list item */
-		    free(addrFreeP);
-		    addrFreeP = NULL;
-	    }
-		return Z25_ERROR;
+        DBGWRT_ERR( (z25HdlP->dbgHdlP, "*** Z25/Z125 - No considerable PCI devices found\n") );
+        /* KlocWork finding: free already malloc'ed elements, like above
+         * (This scenario can occur if e.g. some list handles could be allocated,
+         * then during search for Z25 devices we run out of memory).
+         * In that case, LocScanPciDevices returned a nr. of PCI devices but not all.
+         * We iterate trough the list from start element to that number (or as long as there
+         * are ->nextP elements) and free them. */
+        for( i=0; (i < noPciDevices) && (pciDevicesP != NULL); i++ ) {
+            addrFreeP = (u_int32 *)pciDevicesP;
+            pciDevicesP = (Z25_PCI_SCAN_TS *)pciDevicesP->nextP;
+            /* free list item */
+            free(addrFreeP);
+            addrFreeP = NULL;
+        }
+        return Z25_ERROR;
     }
 
     z25HdlP->noPciPaths = index;
@@ -1556,15 +1557,18 @@ LOCAL int LocCreate( Z25_TY_CO_DEV_TS *chanP,
  */
 LOCAL int LocOpen( Z25_TY_CO_DEV_TS *chanP )
 {
-	if (chanP != NULL) {
-		chanP->useCnt++;
-		if ( chanP->useCnt == 1 ) {
-			/* first open: Set UART to RS232 mode as default (enables the Receiver) */
-			MZ25_SetSerialMode(chanP->unitHdlP, MZ25_MODE_RS232);
-		}
-		return (int)chanP;
-	} else
-		return(Z25_ERROR);		   
+    if( chanP != NULL )
+    {
+        chanP->useCnt++;
+        if( chanP->useCnt == 1 )
+        {
+            /* first open: Set UART to RS232 mode as default (enables the Receiver) */
+            MZ25_SetSerialMode( chanP->unitHdlP,
+                                MZ25_MODE_RS232 );
+        }
+        return (int)chanP;
+    }
+    else return ( Z25_ERROR );
 }/* LocCreate */
 
 
@@ -1574,25 +1578,28 @@ LOCAL int LocOpen( Z25_TY_CO_DEV_TS *chanP )
  * This routine is used by the tyLib to close a UART channel using the
  * VxWorks function 'close()'.
  *
- *  \param fh	 file handle
+ *  \param fh     file handle
  *
  *  \return OK
  */
 LOCAL int LocClose( Z25_TY_CO_DEV_TS *chanP )
 {
-	switch (chanP->useCnt) {
-	case 0:
-		return(Z25_ERROR);
-		break;	
-	case 1:	/* close last handle? -> disable Rx */
-		MZ25_REG_WRITE(chanP->addr, MIZ25_ACR_OFFSET, 
-					   MZ25_REG_READ(chanP->addr, MIZ25_ACR_OFFSET) &=~MIZ25_RXEN);
-		chanP->useCnt--;
-		return(OK);
-	default:
-		chanP->useCnt--;
-		return(OK);
-	}
+    switch( chanP->useCnt )
+    {
+        case 0:
+            return ( Z25_ERROR );
+            break;
+        case 1: /* close last handle? -> disable Rx */
+            MZ25_REG_WRITE( chanP->addr,
+                            MIZ25_ACR_OFFSET,
+                            MZ25_REG_READ( chanP->addr,
+                                           MIZ25_ACR_OFFSET ) &= ~MIZ25_RXEN );
+            chanP->useCnt--;
+            return ( OK );
+        default:
+            chanP->useCnt--;
+            return ( OK );
+    }
 }/* LocClose */
 
 
@@ -1919,12 +1926,12 @@ LOCAL void LocSioReceiveInt(Z25_TY_CO_DEV_TS *chanP){
     IDBGWRT_4((((TS_16Z25_UNIT *)chanP->unitHdlP)->dbgHdlP,
         ">>> Z25/Z125 - LocSioReceiveInt\n"));
 
-	/* don't know how to handle characters?
-	 * throw them away! */
+    /* don't know how to handle characters?
+     * throw them away! */
     if( chanP->u.sioT.putRcvChar == NULL ){
         while(MZ25_RECEIVE_STATUS(chanP->addr)){
-	        MZ25_READ_BYTE(chanP->addr);
-	    }
+            MZ25_READ_BYTE(chanP->addr);
+        }
         return;
     }
 
@@ -2229,8 +2236,8 @@ LOCAL STATUS LocInitChannels(Z25_HDL *hdlP,
  *  \return Z25_OK or Z25_ERROR
  */
 LOCAL STATUS LocEnableInterrupt(Z25_HDL *hdlP,
-                          		 u_int16 unit,
-                         		 u_int16 channel){
+                                u_int16 unit,
+                                u_int16 channel){
     Z25_DEV_TS *z25DevP;  /* Z25 resources */
 
     if( hdlP == NULL ){
@@ -2246,7 +2253,7 @@ LOCAL STATUS LocEnableInterrupt(Z25_HDL *hdlP,
         z25DevP->quadUart[unit][0].addr,
         z25DevP->quadUart[unit][0].irq));
 
-	/* Connect.. */
+    /* Connect.. */
     (*z25DevP->irqFct.fIntConnectP)(
 #ifdef Z25_USE_VXBPCI_FUNCS
     (VXB_DEVICE_ID)(G_Z25_vxbDevID),
@@ -2260,7 +2267,7 @@ LOCAL STATUS LocEnableInterrupt(Z25_HDL *hdlP,
 
     /* enable receive interrupt of channel */
     MZ25_EnableInterrupt( (HDL_16Z25 *)z25DevP->quadUart[unit][channel].unitHdlP,
-	    				  MZ25_RDAIEN );
+                          MZ25_RDAIEN );
 
     return Z25_OK;
 } /* LocEnableInterrupt */
@@ -2339,12 +2346,12 @@ STATUS Z25_FindUartUnits(Z25_HDL *hdlP,
     Z25_DEV_TS *z25HdlP;      /* Z25 resources */
     CHAM_FUNCTBL        chamFctTable;   /* Chameleon function table */
     CHAMELEONV2_HANDLE *chamHdl;        /* Chameleon handle */
-	CHAMELEONV2_FIND	chamFind;       /* Chameleon find */
-	CHAMELEONV2_UNIT    chamInfo;       /* Chameleon unit information */
+    CHAMELEONV2_FIND    chamFind;       /* Chameleon find */
+    CHAMELEONV2_UNIT    chamInfo;       /* Chameleon unit information */
     u_int16 i;                          /* for loop index */
     u_int16 k = 0;                      /* while loop index */
     u_int16 unit = 0;                   /* UART unit counter */
-    int32 irq = 0;                     	/* UART unit interrupt */
+    int32 irq = 0;                         /* UART unit interrupt */
 
     if( hdlP == NULL ){
         return Z25_ERROR;
@@ -2356,11 +2363,11 @@ STATUS Z25_FindUartUnits(Z25_HDL *hdlP,
     i = pathIndex;
 
     DBGWRT_1((z25HdlP->dbgHdlP, "Z25_FindUartUnits: pathIndex = %d @ PCI dom./b.d.f %d/%d.%d.%d\n",
-    		pathIndex,
-    		OSS_DOMAIN_NBR(z25HdlP->pathInfo[i].pci.bus),
-			OSS_BUS_NBR(z25HdlP->pathInfo[i].pci.bus),
-			z25HdlP->pathInfo[i].pci.dev,
-			z25HdlP->pathInfo[i].pci.fct ));
+            pathIndex,
+            OSS_DOMAIN_NBR(z25HdlP->pathInfo[i].pci.bus),
+            OSS_BUS_NBR(z25HdlP->pathInfo[i].pci.bus),
+            z25HdlP->pathInfo[i].pci.dev,
+            z25HdlP->pathInfo[i].pci.fct ));
 
     if(CHAM_INIT(&chamFctTable) != CHAMELEON_OK){
         DBGWRT_ERR( (z25HdlP->dbgHdlP,
@@ -2372,10 +2379,11 @@ STATUS Z25_FindUartUnits(Z25_HDL *hdlP,
      * merged into the upper 16bit of bus nr. are evaluated as the PCI domain
      * */
     if( chamFctTable.InitPci( NULL,
-							  z25HdlP->pathInfo[i].pci.bus,
-							  z25HdlP->pathInfo[i].pci.dev,
-							  z25HdlP->pathInfo[i].pci.fct,
-							  &chamHdl) != CHAMELEON_OK ){
+                              z25HdlP->pathInfo[i].pci.bus,
+                              z25HdlP->pathInfo[i].pci.dev,
+                              z25HdlP->pathInfo[i].pci.fct,
+                              &chamHdl ) != CHAMELEON_OK )
+    {
         DBGWRT_ERR( (z25HdlP->dbgHdlP,
             "*** Z25/Z125 - Chameleon V2 PCI initialization failed.\n") );
         return Z25_ERROR;
@@ -2385,15 +2393,15 @@ STATUS Z25_FindUartUnits(Z25_HDL *hdlP,
         /* find 16Z025/16Z125 and 16Z057 units in Chameleon table */
         chamFind.devId    =  CHAM_ModCodeToDevId( G_modId[k] );
         chamFind.variant  = -1; chamFind.instance = -1;
-	    chamFind.busId    = -1; chamFind.group    = -1;
-	    chamFind.bootAddr = -1;
+        chamFind.busId    = -1; chamFind.group    = -1;
+        chamFind.bootAddr = -1;
 
-        while( chamFctTable.InstanceFind(chamHdl,
-                                         unit,
-                                         chamFind,
-										&chamInfo,
-										NULL,
-										NULL) == CHAMELEONV2_UNIT_FOUND)
+        while( chamFctTable.InstanceFind( chamHdl,
+                                          unit,
+                                          chamFind,
+                                          &chamInfo,
+                                          NULL,
+                                          NULL ) == CHAMELEONV2_UNIT_FOUND )
         {
             DBGWRT_2( (z25HdlP->dbgHdlP,
                     "Z25/Z125 - uart id 0x%lx found in chameleon table (unit=%d)\n",
@@ -2418,11 +2426,12 @@ STATUS Z25_FindUartUnits(Z25_HDL *hdlP,
                     "Z25/Z125 - uart unit %d uses PCI interrupt.\n",
                     unit) );
 
-                 OSS_PciGetConfig(NULL,
-							 z25HdlP->pathInfo[i].pci.bus,
-	                             z25HdlP->pathInfo[i].pci.dev,
-	                             z25HdlP->pathInfo[i].pci.fct,
-							 OSS_PCI_INTERRUPT_LINE, &irq);
+                OSS_PciGetConfig( NULL,
+                                  z25HdlP->pathInfo[i].pci.bus,
+                                  z25HdlP->pathInfo[i].pci.dev,
+                                  z25HdlP->pathInfo[i].pci.fct,
+                                  OSS_PCI_INTERRUPT_LINE,
+                                  &irq );
             }
             else {
                 DBGWRT_2( (z25HdlP->dbgHdlP,
@@ -2497,12 +2506,12 @@ STATUS Z25_SetIntFunctions(Z25_HDL *hdlP,
     /* previous non-pci domain behaviour */
     if( intConnectAddr == NULL ){/* take VxWorks pciIntConnect */
 
-    	printf("Z25_SetIntFunctions: No ISR connect routine specified. Using ");
+        printf("Z25_SetIntFunctions: No ISR connect routine specified. Using ");
 #ifndef Z25_USE_VXBPCI_FUNCS
         printf("pciIntConnect.\n");
         z25DevP->irqFct.fIntConnectP = (FUNCPTR)pciIntConnect;
 #else
-    	printf("intConnect.\n");
+        printf("intConnect.\n");
         z25DevP->irqFct.fIntConnectP = (FUNCPTR)vxbPciIntConnect;
 #endif
     }
@@ -2512,7 +2521,7 @@ STATUS Z25_SetIntFunctions(Z25_HDL *hdlP,
 
     /* intEnable works both in non-vxBus and vxBus environments */
     if( intEnableAddr == NULL ){/* take VxWorks intEnable */
-    	printf("Z25_SetIntFunctions: No IRQ enable routine specified. Using intEnable.\n");
+        printf("Z25_SetIntFunctions: No IRQ enable routine specified. Using intEnable.\n");
         z25DevP->irqFct.fIntEnableP = (FUNCPTR)intEnable;
     }
     else{/* take user interrupt enable function */
@@ -2539,11 +2548,11 @@ STATUS Z25_SetIntFunctions(Z25_HDL *hdlP,
 STATUS Z25_SetBaseBaud(Z25_HDL *hdlP,
                         u_int32 frequency,
                         u_int16 unit){
-    Z25_DEV_TS *z25DevP;		/* Z25 resources */
-    HDL_16Z25  *unitHdlP;		/* 16Zx25 handle */
-    /* TS_16Z25_UNIT *tmphdlP;*/ 	/* 16Z025 resources */
-    u_int16 j;               /* loop index */
-    int32 baudrate = 0;		/* baudrate value */
+    Z25_DEV_TS *z25DevP;    /* Z25 resources */
+    HDL_16Z25 *unitHdlP;    /* 16Zx25 handle */
+    /* TS_16Z25_UNIT *tmphdlP;*//* 16Z025 resources */
+    u_int16 j;              /* loop index */
+    int32 baudrate = 0;     /* baudrate value */
     u_int16 maxChannels = 0;
 
     if( hdlP == NULL ){
@@ -2621,16 +2630,16 @@ Z25_HDL * Z25_InitDriver(void){
  **/
 LOCAL STATUS DRV_ParseDirectPciLoc( char *pStr, int* dom, int* bus, int* dv, int* fn)
 {
-	#define PCI_LOC_NR_ITEMS	4  /* we want domain,bus,dev,fct number to be parsed */
+    #define PCI_LOC_NR_ITEMS    4  /* we want domain,bus,dev,fct number to be parsed */
 
-	STATUS errval = OK;
+    STATUS errval = OK;
 
     if (sscanf(pStr, "PCI%d:%d.%d.%d", dom, bus, dv, fn ) < PCI_LOC_NR_ITEMS)
     {
-    	errval = ERROR;
+        errval = ERROR;
     }
 
-	return errval;
+    return errval;
 }
 
 /**********************************************************************/
@@ -2664,17 +2673,17 @@ Z25_HDL * Z25_CreateDevice(int8 *devNameP,
                            u_int16 irqOffset,
                            u_int32 uartFreq,
                            FUNCPTR intConnectAddr,
-                           FUNCPTR 	intEnableAddr )
+                           FUNCPTR intEnableAddr )
 {
-    Z25_DEV_TS *z25DevP=NULL;      	/* Z25 resources */
-    int8 tmpDevicePath[IZ25_PATH_LENGTH];     /* hexadecimal device path */
-    u_int8 i, j, l_const  = 255;              	/* loop index */
-    u_int8 k = 0;               /* index */
-    int pdom, pb, pd, pf;    /* PCI domain, bus, dev, function */
-    u_int16 unit = 0;           /* UART unit */
-    u_int16 maxUnit = 0;        /* number of units */
-    u_int16 pathIndex = 0;      /* array index of PCI path */
-    u_int16 loopIndex = 0;      /* loop index */
+    Z25_DEV_TS *z25DevP=NULL;               /* Z25 resources */
+    int8 tmpDevicePath[IZ25_PATH_LENGTH];   /* hexadecimal device path */
+    u_int8 i, j, l_const  = 255;            /* loop index */
+    u_int8 k = 0;                           /* index */
+    int pdom, pb, pd, pf;                   /* PCI domain, bus, dev, function */
+    u_int16 unit = 0;                       /* UART unit */
+    u_int16 maxUnit = 0;                    /* number of units */
+    u_int16 pathIndex = 0;                  /* array index of PCI path */
+    u_int16 loopIndex = 0;                  /* loop index */
     u_int32 frequency = 0;
 
     bzero((void*)tmpDevicePath, sizeof(tmpDevicePath));
@@ -2695,7 +2704,7 @@ Z25_HDL * Z25_CreateDevice(int8 *devNameP,
      +------------------------------*/
     /* create Z25 handle */
     if( (z25DevP=Z25_InitDriver()) == NULL ){
-    	printf("*** Z25_InitDriver() failed, exit.\n");
+        printf("*** Z25_InitDriver() failed, exit.\n");
         return NULL;
     }
 
@@ -2724,43 +2733,43 @@ Z25_HDL * Z25_CreateDevice(int8 *devNameP,
     if (pathStringP[0] == 'P' && pathStringP[1] == 'C' && pathStringP[2] == 'I')
     {
 
-    	DBGWRT_2((z25DevP->dbgHdlP,
-    				"Z25_CreateDevice: direct PCI location specified, searching UART units..\n" ));
+        DBGWRT_2((z25DevP->dbgHdlP,
+                  "Z25_CreateDevice: direct PCI location specified, searching UART units..\n" ));
 
-    	/* direct PCI device specified, omit PCI path scanning. Interpret the number behind "PCI */
-    	pathIndex = 0;
-    	DRV_ParseDirectPciLoc((char*)pathStringP, &pdom,&pb,&pd,&pf);
-    	z25DevP->pathInfo[pathIndex].pci.bus 	= OSS_MERGE_BUS_DOMAIN(pb, pdom);
-    	z25DevP->pathInfo[pathIndex].pci.dev 	= (u_int16)pd;
-    	z25DevP->pathInfo[pathIndex].pci.fct 	= (u_int16)pf;
+        /* direct PCI device specified, omit PCI path scanning. Interpret the number behind "PCI */
+        pathIndex = 0;
+        DRV_ParseDirectPciLoc((char*)pathStringP, &pdom,&pb,&pd,&pf);
+        z25DevP->pathInfo[pathIndex].pci.bus    = OSS_MERGE_BUS_DOMAIN(pb, pdom);
+        z25DevP->pathInfo[pathIndex].pci.dev    = (u_int16)pd;
+        z25DevP->pathInfo[pathIndex].pci.fct    = (u_int16)pf;
 
-    	if( Z25_FindUartUnits(z25DevP, pathIndex, &unit, &maxUnit) != Z25_OK ){
-    		DBGWRT_ERR((z25DevP->dbgHdlP,
-    				"*** Z25/Z125 - Error initializing chameleon units.\n"));
-    		goto CLEANUP;
-    	}
+        if( Z25_FindUartUnits(z25DevP, pathIndex, &unit, &maxUnit) != Z25_OK ){
+            DBGWRT_ERR((z25DevP->dbgHdlP,
+                        "*** Z25/Z125 - Error initializing chameleon units.\n"));
+            goto CLEANUP;
+        }
     }
     else
     {
-    	DBGWRT_2((z25DevP->dbgHdlP, "Z25_CreateDevice: standard PCI path specified, iterating through it.\n" ));
+        DBGWRT_2((z25DevP->dbgHdlP, "Z25_CreateDevice: standard PCI path specified, iterating through it.\n" ));
 
-    	/* regular search path */
-    LocBuildPciPath(pathStringP, tmpDevicePath);
-
-    	/* find units */
-    if( Z25_GetPciPathInfo((Z25_HDL *)z25DevP, tmpDevicePath, &pathIndex) != Z25_OK ){
-        DBGWRT_ERR((z25DevP->dbgHdlP,
-            "*** Z25/Z125 - Unknown PCI bus path !\n"));
-        goto CLEANUP;
-    }
-
-    	DBGWRT_2((z25DevP->dbgHdlP, "Z25_GetPciPathInfo returned pathIndex %d\n", pathIndex));
-
-    if( Z25_FindUartUnits(z25DevP, pathIndex, &unit, &maxUnit) != Z25_OK ){
-        DBGWRT_ERR((z25DevP->dbgHdlP,
-            "*** Z25/Z125 - Error initializing chameleon units.\n"));
-        goto CLEANUP;
-    }
+            /* regular search path */
+        LocBuildPciPath(pathStringP, tmpDevicePath);
+    
+            /* find units */
+        if( Z25_GetPciPathInfo((Z25_HDL *)z25DevP, tmpDevicePath, &pathIndex) != Z25_OK ){
+            DBGWRT_ERR((z25DevP->dbgHdlP,
+                "*** Z25/Z125 - Unknown PCI bus path !\n"));
+            goto CLEANUP;
+        }
+    
+            DBGWRT_2((z25DevP->dbgHdlP, "Z25_GetPciPathInfo returned pathIndex %d\n", pathIndex));
+    
+        if( Z25_FindUartUnits(z25DevP, pathIndex, &unit, &maxUnit) != Z25_OK ){
+            DBGWRT_ERR((z25DevP->dbgHdlP,
+                "*** Z25/Z125 - Error initializing chameleon units.\n"));
+            goto CLEANUP;
+        }
     }
 
     z25DevP->pathInfo[pathIndex].installed = TRUE;
@@ -2770,11 +2779,11 @@ Z25_HDL * Z25_CreateDevice(int8 *devNameP,
         | driver installation section  |
         +------------------------------*/
 
-	/* KlocWork: check validity of index j first */
-    	if ( j >= IZ25_MAX_UNITS ) {
+    /* KlocWork: check validity of index j first */
+        if ( j >= IZ25_MAX_UNITS ) {
                     DBGWRT_ERR((z25DevP->dbgHdlP, "*** Z25/Z125 - internal bug: too many /tty instances found ?\n"));
                     goto CLEANUP;
-    	}
+        }
 
         if( z25DevP->quadUart[j][0].uartCore == IZ25_MODID_2 ){
             if( k >= Z25_MAX_UARTS_PER_DEV ){
@@ -2803,8 +2812,8 @@ Z25_HDL * Z25_CreateDevice(int8 *devNameP,
             z25DevP->driverNumber[j] =  z25DevP->driverNumber[l_const];
         }
 
-		/* set base baud for all units in IP core */
-	    Z25_SetBaseBaud((Z25_HDL *)z25DevP, frequency, j);
+        /* set base baud for all units in IP core */
+        Z25_SetBaseBaud((Z25_HDL *)z25DevP, frequency, j);
 
         for(i=0; i<loopIndex; i++ ){
             if( Z25_InstallTtyInterface( (Z25_HDL *)z25DevP, devNameP, j, i, Z25_RX_BUFF_SIZE, Z25_TX_BUFF_SIZE) != Z25_OK ) {
@@ -2848,11 +2857,11 @@ STATUS Z25_InitDriverAtBoot(Z25_HDL *hdlP,
                              u_int16 unit,
                              u_int16 channel)
 {
-	STATUS error = Z25_OK;
+    STATUS error = Z25_OK;
     Z25_DEV_TS *z25DevP;  /* Z25 resources */
 
     if( (z25DevP = hdlP) == NULL ||
-    	z25DevP->quadUart[unit][channel].addr == 0 ){
+        z25DevP->quadUart[unit][channel].addr == 0 ){
         return Z25_ERROR;
     }
 
@@ -2867,7 +2876,7 @@ STATUS Z25_InitDriverAtBoot(Z25_HDL *hdlP,
     if( error == Z25_OK ){
         LocEnableInterrupt(z25DevP, unit, channel);
     }
-	return error;
+    return error;
 } /* Z25_InitDriverAtBoot */
 
 /**********************************************************************/
@@ -2922,9 +2931,9 @@ STATUS Z25_InstallTtyInterface(Z25_HDL * hdlP,
         else {
             sprintf ((char*)tyName, "%s%d%s%d", devNameP, unit, "/", noOfChan);
         }
-		
-		/* store channel nr so we can unit value  */
-		z25DevP->quadUart[unit][noOfChan].unit = noOfChan;
+        
+        /* store channel nr so we can unit value  */
+        z25DevP->quadUart[unit][noOfChan].unit = noOfChan;
 
         if( iosDevAdd(&z25DevP->quadUart[unit][noOfChan].u.tyDev.devHdr,
                       (char*)tyName, z25DevP->driverNumber[unit]) ){
