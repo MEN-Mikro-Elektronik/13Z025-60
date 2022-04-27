@@ -51,6 +51,7 @@
 #ifndef __VXTTYIOCTL_H
 #define __VXTTYIOCTL_H
 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -59,9 +60,52 @@ extern "C" {
 |   INCLUDES                             |
 +--------------------------------------*/
 
+#if _WRS_VXWORKS_MAJOR == 7
+
+#include <sys/ioctl.h>
+
+#define VX_IOCG_MEN_Z135 'Z'
+
+#endif /* VXW 7 */
 /*--------------------------------------+
-|   DEFINES                             |
+| DEFINES |
 +--------------------------------------*/
+#if _WRS_VXWORKS_MAJOR == 7
+
+#define MEN_UART_IOCTL_DATABITS	                    _IOW(VX_IOCG_MEN_Z135, 0, UINT32)
+#define MEN_UART_IOCTL_PARITY                       _IOW(VX_IOCG_MEN_Z135, 1, UINT32)
+#define MEN_UART_IOCTL_STOPBITS                     _IOW(VX_IOCG_MEN_Z135, 2, UINT32)
+#define MEN_UART_IOCTL_SET_RTS                      _IOW(VX_IOCG_MEN_Z135, 3, UINT32)
+#define MEN_UART_IOCTL_SET_DTR                      _IOW(VX_IOCG_MEN_Z135, 4, UINT32)
+#define MEN_UART_IOCTL_SET_OUT1                     _IOW(VX_IOCG_MEN_Z135, 5, UINT32)
+#define MEN_UART_IOCTL_SET_OUT2                     _IOW(VX_IOCG_MEN_Z135, 6, UINT32)
+#define MEN_UART_IOCTL_GET_CTS                      _IOR(VX_IOCG_MEN_Z135, 7, UINT32)
+#define MEN_UART_IOCTL_GET_DSR                      _IOR(VX_IOCG_MEN_Z135, 8, UINT32)
+#define MEN_UART_IOCTL_GET_DCD                      _IOR(VX_IOCG_MEN_Z135, 9, UINT32)
+#define MEN_UART_IOCTL_GET_DTR                      _IOR(VX_IOCG_MEN_Z135, 10, UINT32)
+#define MEN_UART_IOCTL_GET_DTS                      _IOR(VX_IOCG_MEN_Z135, 11, UINT32)
+#define MEN_UART_IOCTL_GET_RTS                      _IOR(VX_IOCG_MEN_Z135, 12, UINT32)
+#define MEN_UART_IOCTL_GET_RING                     _IOR(VX_IOCG_MEN_Z135, 13, UINT32)
+
+
+
+#define MEN_UART_IOCTL_MODE_SELECT                  _IOW(VX_IOCG_MEN_Z135, 14, UINT32)
+#define MEN_UART_IOCTL_AUTO_RS485                   _IOW(VX_IOCG_MEN_Z135, 15, UINT32)
+#define MEN_UART_IOCTL_MODE_GET                     _IOR(VX_IOCG_MEN_Z135, 16, UINT32)
+#define MEN_UART_IOCTL_MODEM                        _IOW(VX_IOCG_MEN_Z135, 17, UINT32)
+#define MEN_UART_IOCTL_SET_FIFO_BYTES               _IOW(VX_IOCG_MEN_Z135, 18, UINT32)
+#define MEN_UART_IOCTL_GET_RCV_BYTES                _IOR(VX_IOCG_MEN_Z135, 19, UINT32)
+#define MEN_UART_IOCTL_SET_TX_FIFO_BYTES            _IOW(VX_IOCG_MEN_Z135, 20, UINT32)
+#define MEN_UART_IOCTL_LINE_STATUS                  _IOR(VX_IOCG_MEN_Z135, 21, UINT32)
+
+/* handshake variants */
+#define MEN_UART_IOCTL_XON_XOFF                    _IOW(VX_IOCG_MEN_Z135, 22, UINT32)
+#define MEN_UART_IOCTL_RTS_CTS                     _IOW(VX_IOCG_MEN_Z135, 23, UINT32)
+#define MEN_UART_IOCTL_DTR_DSR                     _IOW(VX_IOCG_MEN_Z135, 24, UINT32)
+#define MEN_UART_IOCTL_HANDSHAKE_OFF               _IOW(VX_IOCG_MEN_Z135, 25, UINT32)
+
+#else /* VXW 7 */
+
 #define MEN_UART_IOCTL_DATABITS           100
 #define MEN_UART_IOCTL_PARITY             101
 #define MEN_UART_IOCTL_STOPBITS           102
@@ -91,6 +135,8 @@ extern "C" {
 #define MEN_UART_IOCTL_RTS_CTS            161
 #define MEN_UART_IOCTL_DTR_DSR            162
 #define MEN_UART_IOCTL_HANDSHAKE_OFF      163
+
+#endif /* VXW 7 */
 
 #ifdef __cplusplus
 }

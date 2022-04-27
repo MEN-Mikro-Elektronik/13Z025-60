@@ -122,12 +122,12 @@ extern "C" {
 /** This structure describes PCI bus scan interface.
  */
 typedef struct {/* Z25_PCI_SCAN_TS */
-    u_int16 vendorId;           /**< vendor ID */
-    u_int16 deviceId;           /**< device ID */
-    u_int8 busNo;               /**< PCI bus number */
-    u_int8 deviceNo;            /**< PCI device number */
-    u_int8 funcNo;              /**< PCI function number */
-    u_int32 *nextP;             /**< address of next PCI device */
+    u_int16 vendorId;   /**< vendor ID */
+    u_int16 deviceId;   /**< device ID */
+    u_int8 busNo;       /**< PCI bus number */
+    u_int8 deviceNo;    /**< PCI device number */
+    u_int8 funcNo;      /**< PCI function number */
+    u_int32 *nextP;     /**< address of next PCI device */
 } Z25_PCI_SCAN_TS;
 
 
@@ -224,7 +224,7 @@ typedef struct {/* Z25_DEV_TS */
     int16 driverNumber[IZ25_MAX_UNITS];       /**< vxworks driver number */
     DBG_HANDLE *dbgHdlP;                     /**< debug handle */
 
-     u_int16 irqOffset;              /**< interrupt offset for chameleon
+    u_int16 irqOffset;              /**< interrupt offset for chameleon
                                           interrupt use */
     u_int8  usePciIrq;              /**< use PCI irq (1=enabled, 0=disabled)*/
     Z25_IRQ_TS irqFct;               /**< interrupt functions */

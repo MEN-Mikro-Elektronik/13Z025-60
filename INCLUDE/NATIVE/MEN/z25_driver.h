@@ -62,17 +62,20 @@ extern "C" {
 
 #define Z25_RX_BUFF_SIZE               (512)	/**< Rx Buffer Size */
 #define Z25_TX_BUFF_SIZE               (512)	/**< Tx Buffer Size */
-#define Z25_RX_FIFO_TRIG_LEVEL         (4) 	/**< Rx FIFO Trigger Level */
-#define Z25_TX_FIFO_TRIG_LEVEL         (30)	/**< Tx FIFO Trigger Level */
+#define Z25_RX_FIFO_TRIG_LEVEL         (4) 		/**< Rx FIFO Trigger Level */
+#define Z25_TX_FIFO_TRIG_LEVEL         (30)		/**< Tx FIFO Trigger Level */
 
-#define Z25_MAX_PCI_DEV			10  	/**< maximum number of supported pci devices with Z25/Z125 units */
-						/* default: 10 */
 
-#define Z25_MAX_UNITS     		12  	/**< maximum number of supported units in system */
-						/* default: 12 */
+#define Z25_MAX_PCI_DEV				    10
+										  /**< maximum number of supported pci devices with Z25/Z125 units */
+										  /* default: 10 */
 
-#define Z25_MAX_UARTS_PER_DEV           4 	/**< maximal number of uarts per device */
-					  	/* typically 4 in Z25 Quad UART */
+#define Z25_MAX_UNITS        			12
+										  /**< maximum number of supported units in system */
+										  /* default: 12 */
+
+#define Z25_MAX_UARTS_PER_DEV           4 /**< maximal number of uarts per device */
+										  /* typically 4 in Z25 Quad UART */
 
 #define Z25_MAX_PCI_BUS_SEARCH          (256)
 #define Z25_PCI_IRQ_ENABLED             (1)           /**< PCI irq enable */
@@ -87,7 +90,8 @@ typedef void Z25_HDL;
  * This enumeration contains the Z25 return values.
  */
 typedef enum {/* Z25_RETURN */
-	Z25_OK = OK, Z25_ERROR = ERROR
+	Z25_OK = OK,
+	Z25_ERROR = ERROR
 } Z25_RETURN;
 
 /*--------------------------------------+
@@ -97,53 +101,46 @@ extern void Z25_DriverId(void);
 
 extern Z25_HDL * Z25_InitDriver(void);
 
-extern Z25_HDL * Z25_CreateDevice(
-		int8 *devName,
-		int8 *inString,
-		u_int8  usePciIrq,
-		u_int32 irqBase,
-		u_int16 irqOffset,
-		u_int32 uartFreq,
-		FUNCPTR intConnectAddr,
-		FUNCPTR intEnableAddr);
+extern Z25_HDL * Z25_CreateDevice(int8 *devName,
+									int8 *inString,
+									u_int8  usePciIrq,
+							        u_int32 irqBase,
+							        u_int16 irqOffset,
+							        u_int32 uartFreq,
+							        FUNCPTR intConnectAddr,
+							        FUNCPTR intEnableAddr);
 
-extern STATUS Z25_SetIntFunctions(
-		Z25_HDL *hdlP,
-		u_int32 irqBase,
-		FUNCPTR intConnectAddr,
-		FUNCPTR intEnableAddr);
+extern STATUS Z25_SetIntFunctions(Z25_HDL *hdlP,
+                                 u_int32 irqBase,
+							     FUNCPTR intConnectAddr,
+							     FUNCPTR intEnableAddr);
 
-extern STATUS Z25_InitDriverAtBoot(
-		Z25_HDL *hdlP,
-		u_int16 unit,
-		u_int16 channel);
+extern STATUS Z25_InitDriverAtBoot(Z25_HDL *hdlP,
+							   u_int16 unit,
+				               u_int16 channel);
 
-extern STATUS Z25_FindUartUnits(
-		Z25_HDL *hdlP,
-		u_int16 pathIndex,
-		u_int16 *unitP,
-		u_int16 *maxUnitP);
+extern STATUS Z25_FindUartUnits(Z25_HDL *hdlP,
+								 u_int16 pathIndex,
+				                 u_int16 *unitP,
+				                 u_int16 *maxUnitP);
 
-extern STATUS Z25_SetBaseBaud(
-		Z25_HDL *hdlP,
-		u_int32 frequency,
-		u_int16 unit);
+extern STATUS Z25_SetBaseBaud(Z25_HDL *hdlP,
+		                       u_int32 frequency,
+					           u_int16 unit);
 
-extern STATUS Z25_InstallTtyInterface(
-		Z25_HDL * hdlP,
-		int8 *devNameP,
-		u_int16 unit,
-		u_int16 noOfChan,
-		u_int16 rxBuffSize,
-		u_int16 txBuffSize);
+extern STATUS Z25_InstallTtyInterface(Z25_HDL * hdlP,
+					    			   int8 *devNameP,
+								       u_int16 unit,
+								       u_int16 noOfChan,
+								       u_int16 rxBuffSize,
+								       u_int16 txBuffSize);
 
 extern STATUS Z25_GetPciPathInfo(Z25_HDL *hdlP,
-		int8 *devicePathP,
-		u_int16 *pathIndexP);
+		    				    int8 *devicePathP,
+							    u_int16 *pathIndexP);
 
-extern STATUS Z25_GetIosDriverNumber(
-		Z25_HDL * hdlP,
-		u_int16 unit);
+extern STATUS Z25_GetIosDriverNumber(Z25_HDL * hdlP,
+                                      u_int16 unit);
 
 extern STATUS Z25_FreeHandle(Z25_HDL **hdlP);
 
@@ -152,6 +149,7 @@ extern u_int32 Z25_GetDebugLevel(void);
 
 extern u_int32 G_Z25_ChamPciDomain;
 extern VXB_DEVICE_ID G_Z25_vxbDevID;
+
 
 #ifdef __cplusplus
 }
